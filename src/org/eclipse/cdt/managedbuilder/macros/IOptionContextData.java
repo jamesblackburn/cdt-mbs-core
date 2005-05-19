@@ -8,27 +8,28 @@
  * Contributors: 
  * Intel Corporation - Initial API and implementation
  **********************************************************************/
-package org.eclipse.cdt.managedbuilder.envvar;
+package org.eclipse.cdt.managedbuilder.macros;
+
+import org.eclipse.cdt.managedbuilder.core.IBuildObject;
+import org.eclipse.cdt.managedbuilder.core.IOption;
 
 /**
- * 
+ * This interface is used to represent an option context data
+ *  
  * @since 3.0
  */
-public interface IEnvironmentVariableSupplier {
+public interface IOptionContextData {
+	/**
+	 * Returns an option
+	 * 
+	 * @return IOption
+	 */
+	public IOption getOption();
 	
 	/**
-	 *
-	 * @param name the variable name
-	 * @param context the context
-	 * @return the reference to the IBuildEnvironmentVariable interface representing 
-	 * the variable of a given name
+	 * Returns IBuildObject that could be either an IToolChain or an IResourceConfiguration reference
+	 * 
+	 * @return IBuildObject
 	 */
-	IBuildEnvironmentVariable getVariable(String name, Object context);
-	
-	/**
-	 *
-	 * @param context the context
-	 * @return the array of IBuildEnvironmentVariable that represents the environment variables 
-	 */
-	IBuildEnvironmentVariable[] getVariables(Object context);
+	public IBuildObject getParent();
 }

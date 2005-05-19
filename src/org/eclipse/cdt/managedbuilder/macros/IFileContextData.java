@@ -8,27 +8,33 @@
  * Contributors: 
  * Intel Corporation - Initial API and implementation
  **********************************************************************/
-package org.eclipse.cdt.managedbuilder.envvar;
+package org.eclipse.cdt.managedbuilder.macros;
+
+import org.eclipse.core.runtime.IPath;
 
 /**
- * 
+ * This interface is used to represent file context data
+ *  
  * @since 3.0
  */
-public interface IEnvironmentVariableSupplier {
+public interface IFileContextData {
 	
 	/**
-	 *
-	 * @param name the variable name
-	 * @param context the context
-	 * @return the reference to the IBuildEnvironmentVariable interface representing 
-	 * the variable of a given name
+	 * Returns the input file location
+	 * @return IPath
 	 */
-	IBuildEnvironmentVariable getVariable(String name, Object context);
+	public IPath getInputFileLocation();
 	
 	/**
-	 *
-	 * @param context the context
-	 * @return the array of IBuildEnvironmentVariable that represents the environment variables 
+	 * Returns the output file location
+	 * @return IPath
 	 */
-	IBuildEnvironmentVariable[] getVariables(Object context);
+	public IPath getOutputFileLocation();
+	
+	/**
+	 * Returns the option context data
+	 * 
+	 * @return IOptionContextData
+	 */
+	public IOptionContextData getOptionContextData();
 }

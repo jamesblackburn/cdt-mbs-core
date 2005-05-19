@@ -8,27 +8,27 @@
  * Contributors: 
  * Intel Corporation - Initial API and implementation
  **********************************************************************/
-package org.eclipse.cdt.managedbuilder.envvar;
+package org.eclipse.cdt.managedbuilder.macros;
 
 /**
  * 
  * @since 3.0
  */
-public interface IEnvironmentVariableSupplier {
-	
+public interface IFileContextBuildMacroValues {
+	public static final String PREFIX = "macro";	//$NON-NLS-1$
+	public static final String SUFFIX = "Value";	//$NON-NLS-1$
+
 	/**
 	 *
-	 * @param name the variable name
-	 * @param context the context
-	 * @return the reference to the IBuildEnvironmentVariable interface representing 
-	 * the variable of a given name
+	 * @return the array if strings representing the names of file context macros supported 
+	 * by the builder
 	 */
-	IBuildEnvironmentVariable getVariable(String name, Object context);
-	
+	String[] getSupportedMacros();
+
 	/**
 	 *
-	 * @param context the context
-	 * @return the array of IBuildEnvironmentVariable that represents the environment variables 
+	 * @return the file context macro value for the given macro name 
 	 */
-	IBuildEnvironmentVariable[] getVariables(Object context);
+	String getMacroValue(String macroName);
+
 }
